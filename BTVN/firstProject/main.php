@@ -60,7 +60,7 @@
             <input type="text" name="price">
             <input type="submit">
         </form>
-        <form action="submit.php" method="post" enctype="multipart/form-data">
+        <form action="index.php" method="post" enctype="multipart/form-data">
                 <label for="">Chon anh de tai len</label>
                 <input type="file" name="loadIMG">
                 <input type="submit" name="submit" value="Tai anh">
