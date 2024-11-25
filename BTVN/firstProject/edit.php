@@ -1,8 +1,5 @@
 <?php 
-    $id = $_GET['idsp'];
-    $name = $_GET['tensp'];
-    $price = $_GET['giasp'];
-    echo $id.$name.$price;
+    $id = $_GET['index'];
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +11,7 @@
 </head>
 <body>
     <p>Nhap thong tin va an sua</p>
-    <form action="index.php" method="post">
+    <form action="submit.php?action=editsucces&index=<?= $id?>" method="post">
         <label for="">Ten san pham</label>
         <input type="text" name="name">
         <label for="">Gia</label>

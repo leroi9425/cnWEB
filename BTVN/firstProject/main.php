@@ -1,19 +1,17 @@
 <?php
-    $products = [
+    session_start();
+    $list_products = [
         ["name" => 'San pham 1', "price" => 100] ,
         ["name" => 'San pham 2', "price" => 200] ,
         ["name" => 'San pham 3', "price" => 300] ,
         ["name" => 'San pham 4', "price" => 400] ,
     ];
-
-    // xu li input
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["name"]) && isset($_POST["price"]) && $_POST["name"] != "" && $_POST["price"] != ""){
-        $a =  $_POST["name"];
-        $b = $_POST["price"];
-        $products[] = ["name" => $a, "price" => $b];
+    if(count($_SESSION) <= 0){
+        $_SESSION['products'] = $list_products;
     }
-
-    // xu li anh
+    // foreach($_SESSION['products'] as $value){
+    //     echo $value["name"].'<br>';
+    // }
     if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES["loadIMG"])){
         $target_dir = "upload/";
         $target_file = $target_dir . basename($_FILES["loadIMG"]["name"]);
@@ -30,7 +28,7 @@
                 margin: 10px 10px 10px 0;"
     >Them moi</button>
     </form>
-    <form action="index.php" method="post">
+    <form action="submit.php" method="post">
         <table>
             <tr>
                 <th>San pham</th>
@@ -38,21 +36,20 @@
                 <th>Sua</th>
                 <th>Xoa</th>
             </tr>
-            <?php foreach($products as $index => $value): ?>
+            <?php foreach($_SESSION['products'] as $key => $value): ?>
                 <tr>
                     <td><?= $value["name"]?></th>
                     <td><?= $value["price"]?></td>
                     <td>
-                        <form action="edit.php" method="get">
-                            <button type="submit">
-                                <input type="text" name="idsp" value=<?= $index ?> style="display: none">
-                                <input type="text" name="tensp" value=<?= $value["name"] ?> style="display: none">
-                                <input type="text" name="giasp" value=<?= $value["price"] ?> style="display: none">
-                                <img class="icon" src="image/edit.png" alt="edit" name="edit" style="width: 20px; height: 20px;">
-                            </button>
-                        </form>
+                        <a href="submit.php?action=edit&index=<?= $key?>">
+                            <img class="icon" src="image/edit.png" alt="edit" name="edit" style="width: 20px; height: 20px;">
+                        </a>
                     </td>
-                    <td><img class="icon" src="image/delete.png" alt="" style="width: 20px; height: 20px;"></td>
+                    <td>
+                        <a href="submit.php?action=delete&index=<?= $key?>">
+                            <img class="icon" src="image/delete.png" alt="" style="width: 20px; height: 20px;">
+                        </a>
+                    </td>
                 </tr>
             <?php  endforeach?>
         </table>
@@ -63,7 +60,7 @@
             <input type="text" name="price">
             <input type="submit">
         </form>
-        <form action="index.php" method="post" enctype="multipart/form-data">
+        <form action="submit.php" method="post" enctype="multipart/form-data">
                 <label for="">Chon anh de tai len</label>
                 <input type="file" name="loadIMG">
                 <input type="submit" name="submit" value="Tai anh">

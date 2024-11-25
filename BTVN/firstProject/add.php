@@ -7,7 +7,7 @@
 </head>
 <body>
     <p>Nhap thong tin va an them</p>
-    <form action="index.php" method="post">
+    <form action="submit.php" method="post">
         <label for="">Ten san pham</label>
         <input type="text" name="name">
         <label for="">Gia</label>
