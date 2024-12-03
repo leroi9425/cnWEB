@@ -1,11 +1,7 @@
 <?php
     session_start();
     // xu li input
-    if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES["loadIMG"])){
-        $target_dir = "upload/";
-        $target_file = $target_dir . basename($_FILES["loadIMG"]["name"]);
-        move_uploaded_file($_FILES["loadIMG"]["tmp_name"], $target_file);
-    }
+    
 
     header('location: index.php');
     if(isset($_GET['index'])){
