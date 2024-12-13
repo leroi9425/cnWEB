@@ -1,11 +1,19 @@
-// same as the previous file. Add the following after the nav tag and
-before the closing body tag.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initialscale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384- GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Posts</title>
+</head>
+<body>
 <div class="container h-100 mt-5">
  <div class="row h-100 justify-content-center align-items-center">
  <div class="col-10 col-md-8 col-lg-6">
  <h3>Add a Post</h3>
  <form action="{{ route('posts.store') }}" method="post">
-    @'{{ route('posts.store') }}'
  @csrf
  <div class="form-group">
  <label for="title">Title</label>
@@ -24,3 +32,5 @@ Post</button>
  </div>
  </div>
 </div>
+</body>
+</html>
