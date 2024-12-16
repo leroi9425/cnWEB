@@ -25,7 +25,7 @@
                 <div class="form-group">
                     <label for="body">Body</label>
                     <textarea class="form-control" id="content" name="content"
-                    rows="3" required>{{ $post->body }}</textarea>
+                    rows="3" required>{{ $post->content }}</textarea>
                 </div>
                 <button type="submit" class="btn mt-3 btn-primary">Update Post</button>
             </form>

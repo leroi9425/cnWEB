@@ -31,7 +31,7 @@
                         <p class="card-text">{{ $post->content }}</p>
                     </div>
                     <div class="card-footer">
-                        <div class="row">
+                        <div class="row" >
                             <div class="col-sm">
                                 <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary btn-sm">Edit</a>
                             </div>
